@@ -50,7 +50,6 @@ public class Setup {
         if (this.setupStatus.equals(SetupStatus.SLEEPING))
             throw new SetupSleepingException("@nextStep.sleeping: Setup is not introduced yet");
 
-
         if (this.setupStatus.equals(SetupStatus.FINISHED))
             throw new SetupFinishedException("@nextStep.finished: Setup already finished");
 
