@@ -73,7 +73,7 @@ public class SqlRepository {
             this.hikariDataSource = new HikariDataSource(hikariConfig);
     		this.connected.set(true);
             
-    	} catch (final PoolInitializationException exception) {}
+    	} catch (final PoolInitializationException ignored) {}
 
     }
 

@@ -53,7 +53,7 @@ public class CommandLineInterface implements Entity {
         final Runnable command = () -> {
 
             this.mappedArguments.clear();
-            final String[] buffer = this.COMMAND_LINE_INPUT.split(" ");
+            final String[] buffer = this.COMMAND_LINE_INPUT.nextLine().split(" ");
             for (int i = 0; i < buffer.length; i++) this.mappedArguments.put(i, buffer[i]);
             runnable.run();
 

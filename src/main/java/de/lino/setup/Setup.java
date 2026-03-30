@@ -48,11 +48,11 @@ public class Setup {
     public Setup nextStep(final Consumer<Integer> newStep) {
 
         if (this.setupStatus.equals(SetupStatus.SLEEPING))
-            throw new SetupSleepingException("@nextStep: Setup is not introduced yet");
+            throw new SetupSleepingException("@nextStep.sleeping: Setup is not introduced yet");
 
 
         if (this.setupStatus.equals(SetupStatus.FINISHED))
-            throw new SetupFinishedException("@nextStep: Setup already finished");
+            throw new SetupFinishedException("@nextStep.finished: Setup already finished");
 
         this.cachedSteps.add(this.currentStep++);
         newStep.accept(this.currentStep - 1);
@@ -67,7 +67,7 @@ public class Setup {
     public void introduce(final Runnable execution) {
 
         if (this.setupStatus.equals(SetupStatus.FINISHED))
-            throw new SetupFinishedException("@introduce: Setup already finished");
+            throw new SetupFinishedException("@introduce.finished: Setup already finished");
 
         this.setupStatus = SetupStatus.RUNNING;
         while (this.setupStatus.equals(SetupStatus.RUNNING)) execution.run();
@@ -80,7 +80,7 @@ public class Setup {
     public void finish(final Consumer<Integer> currentStep) {
 
         if (this.setupStatus.equals(SetupStatus.SLEEPING))
-            throw new SetupSleepingException("@finish: Setup is not introduced yet");
+            throw new SetupSleepingException("@finish.sleeping: Setup is not introduced yet");
 
         this.setupStatus = SetupStatus.FINISHED;
         currentStep.accept(this.cachedSteps.get(this.currentStep - 1));
