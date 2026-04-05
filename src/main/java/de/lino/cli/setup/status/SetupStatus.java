@@ -1,4 +1,4 @@
-package de.lino.setup.status;
+package de.lino.cli.setup.status;
 
 import java.util.Arrays;
 

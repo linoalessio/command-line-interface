@@ -1,4 +1,4 @@
-package de.lino.setup.error;
+package de.lino.cli.setup.error;
 
 /**
  * Exception class triggered if setup is still in 'Start' mode but one is trying to call a next or finish a setup

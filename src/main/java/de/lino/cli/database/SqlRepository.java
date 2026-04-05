@@ -1,10 +1,10 @@
-package de.lino.database;
+package de.lino.cli.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.pool.HikariPool.PoolInitializationException;
-import de.lino.database.config.Credentials;
-import de.lino.database.config.HikariDatabaseConfiguration;
+import de.lino.cli.database.config.Credentials;
+import de.lino.cli.database.config.HikariDatabaseConfiguration;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.io.IOException;
@@ -105,13 +105,16 @@ public class SqlRepository {
      * Shutdown database connection
      */
     public void shutdown() {
+
         if (!this.isConnected().get()) return;
+
         this.hikariDataSource.close();
         Logger.getAnonymousLogger().info("SqlRepository has been shut down.");
     }
 
     /**
      * Execute update in database with n entries in query statement and assuring rollback call if query fails
+     * SQL-Injection not possible due to usage of {@link java.sql.PreparedStatement}
      *
      * @param query SqlQuery statement for execution
      * @param entries Objects to be inserted
@@ -145,6 +148,7 @@ public class SqlRepository {
 
     /**
      * Execute query in database with n entries in query statement
+     * SQL-Injection not possible due to usage of {@link java.sql.PreparedStatement}
      *
      * @param query SqlQuery statement for database
      * @param resultMapping Function applying ResultSet and value T
@@ -175,6 +179,7 @@ public class SqlRepository {
 
     /**
      * Calling procedure to set entries in database in order
+     * SQL-Injection not possible due to usage of {@link java.sql.PreparedStatement}
      *
      * @param preparedStatement PreparedStatement that inserts objects
      * @param entries Objects to be inserted
@@ -187,7 +192,7 @@ public class SqlRepository {
 
     /**
      * Check if connection to database was created
-     * @return Atomic object
+     * @return Atomic object for thread-safety
      */
 	public AtomicBoolean isConnected() {
 		return connected;

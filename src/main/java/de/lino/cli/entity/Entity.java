@@ -1,4 +1,4 @@
-package de.lino.entity;
+package de.lino.cli.entity;
 
 import java.io.Serializable;
 
@@ -12,5 +12,12 @@ public interface Entity extends Serializable {
      * @return Formatted entity object
      */
     String toString();
+
+    /**
+     * Creating a hash for storing entity in map
+     * @apiNote {@code Entity().toString().hashCode()}
+     * @return Hashcode of encrypted entity
+     */
+    int hashCode();
 
 }

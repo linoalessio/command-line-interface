@@ -1,4 +1,4 @@
-package de.lino.database.config;
+package de.lino.cli.database.config;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * Class containing database credentials and automatically creating PROPERTIES file
+ * {@link java.util.Properties}
  */
 public class Credentials {
 
@@ -25,6 +26,14 @@ public class Credentials {
      */
     private int port;
 
+    /**
+     * Constructor initializing database credentials for successful connection and handling database.properties
+     * @param address DNS- or IP-Address for connection
+     * @param database Database name
+     * @param username Username for connection
+     * @param password Password to verify identity
+     * @param port Port for connection to proper server
+     */
 	public Credentials(String address, String database, String username, String password, int port) {
 		this.address = address;
 		this.database = database;
@@ -40,10 +49,8 @@ public class Credentials {
      */
     public void build(final Path path) {
 
-        if (!path.toString().endsWith(".properties")) {
-            Logger.getAnonymousLogger().severe("Provided path does not lead to '.properties' file");
-            System.exit(1);
-        }
+        if (!path.toString().endsWith(".properties"))
+            throw  new RuntimeException("@build: Provided path does not lead to '.properties' file");
 
         final File resultPath = Paths.get(path.toString()).toFile();
 

@@ -1,4 +1,4 @@
-package de.lino.database;
+package de.lino.cli.database;
 
 import java.util.function.Function;
 

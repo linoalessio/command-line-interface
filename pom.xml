@@ -4,14 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>de.lino</groupId>
+    <groupId>de.lino.cli</groupId>
     <artifactId>command-line-interface</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.mainClass>none</project.mainClass>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <project.mainClass>de.lino.cli.Main</project.mainClass>
+        <project.jdkType>25</project.jdkType>
+        <maven.compiler.source>${project.jdkType}</maven.compiler.source>
+        <maven.compiler.target>${project.jdkType}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -98,7 +99,6 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.6.3</version>
                 <configuration>
-                    <!-- Avoid javadoc errors -->
                     <doclint>none</doclint>
                     <encoding>UTF-8</encoding>
                     <charset>UTF-8</charset>

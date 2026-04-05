@@ -1,4 +1,4 @@
-package de.lino.setup.error;
+package de.lino.cli.setup.error;
 
 /**
  * Exception class triggered if setup is already finished but one is trying to call a next/new step

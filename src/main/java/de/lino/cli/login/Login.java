@@ -1,7 +1,7 @@
-package de.lino.login;
+package de.lino.cli.login;
 
-import de.lino.database.config.Credentials;
-import de.lino.login.callable.CallbackMapping;
+import de.lino.cli.database.config.Credentials;
+import de.lino.cli.login.callable.CallbackMapping;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +37,7 @@ public class Login {
 
     /**
      * Class constructor called for initializing login class
-     * @param mainFunction {@link de.lino.login.callable.CallbackMapping} Function called of login attempt failed
+     * @param mainFunction {@link de.lino.cli.login.callable.CallbackMapping} Function called of login attempt failed
      * @param attempts limit of attempts
      * @param command CLI input command to extract username and password {@code {userName} {password}}
      */

@@ -1,15 +1,19 @@
-package de.lino.setup;
+package de.lino.cli.setup;
 
 import com.google.common.collect.Lists;
-import de.lino.setup.error.SetupFinishedException;
-import de.lino.setup.error.SetupSleepingException;
-import de.lino.setup.status.SetupStatus;
+import de.lino.cli.setup.error.SetupFinishedException;
+import de.lino.cli.setup.error.SetupRunningException;
+import de.lino.cli.setup.error.SetupSleepingException;
+import de.lino.cli.setup.status.SetupStatus;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 /**
  * Generic class setup being used to set up ab executable system
+ * @apiNote Usage of Setup as sample:
+ * <p>{@code final Setup setup = new Setup();}</p>
+ * <p>{@code setup.introduce(() -> setup.nextStep(System.out::println).finish(System.out::println));}</p>
  */
 public class Setup {
 
@@ -67,6 +71,9 @@ public class Setup {
 
         if (this.setupStatus.equals(SetupStatus.FINISHED))
             throw new SetupFinishedException("@introduce.finished: Setup already finished");
+
+        if  (this.setupStatus.equals(SetupStatus.RUNNING))
+            throw new SetupRunningException("@introduce.running: Setup already running");
 
         this.setupStatus = SetupStatus.RUNNING;
         while (this.setupStatus.equals(SetupStatus.RUNNING)) execution.run();

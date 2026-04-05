@@ -1,4 +1,4 @@
-package de.lino.database.config;
+package de.lino.cli.database.config;
 
 import java.util.Map;
 

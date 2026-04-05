@@ -1,4 +1,4 @@
-package de.lino.console;
+package de.lino.cli.console;
 
 /**
  * Containing valid Java data types for conversion in CLI

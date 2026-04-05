@@ -1,4 +1,4 @@
-package de.lino.login.callable;
+package de.lino.cli.login.callable;
 
 import java.io.Serializable;
 

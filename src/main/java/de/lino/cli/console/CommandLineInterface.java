@@ -1,7 +1,7 @@
-package de.lino.console;
+package de.lino.cli.console;
 
 import com.google.common.collect.Maps;
-import de.lino.entity.Entity;
+import de.lino.cli.entity.Entity;
 
 import java.util.Map;
 import java.util.Scanner;
